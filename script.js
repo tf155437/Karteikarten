@@ -13,7 +13,7 @@ function createFolder() {
     }
 }
 
-// Funktion, um die Ordner anzuzeigen
+// Funktion, um die Ordner in der Sidebar anzuzeigen
 function displayFolders() {
     const folderSection = document.getElementById("folders");
     folderSection.innerHTML = "";
@@ -23,11 +23,9 @@ function displayFolders() {
         folderDiv.innerHTML = `
             <h3>${folder.name}</h3>
             <button onclick="createCategory(${index})">Kategorie hinzufügen</button>
-            <button onclick="learnFolder(${index})">Lernen</button>
-            <div id="categories-${index}"></div>
+            <button onclick="displayCategories(${index})">Kategorien anzeigen</button>
         `;
         folderSection.appendChild(folderDiv);
-        displayCategories(index);
     });
 }
 
@@ -47,11 +45,11 @@ function createCategory(folderIndex) {
 
 // Funktion, um Kategorien anzuzeigen
 function displayCategories(folderIndex) {
-    const categorySection = document.getElementById(`categories-${folderIndex}`);
+    const categorySection = document.getElementById("flashcards");
     categorySection.innerHTML = "";
     folders[folderIndex].categories.forEach((category, catIndex) => {
         const categoryDiv = document.createElement("div");
-        categoryDiv.classList.add("category");
+        categoryDiv.classList.add("flashcard");
         categoryDiv.innerHTML = `
             <h4>${category.name}</h4>
             <button onclick="addFlashcard(${folderIndex}, ${catIndex})">Karte hinzufügen</button>
@@ -70,79 +68,12 @@ function addFlashcard(folderIndex, catIndex) {
     }
 }
 
-// Funktion, um den Lernmodus für einen Hauptordner oder eine Kategorie zu starten
-function learnFolder(folderIndex) {
-    const folder = folders[folderIndex];
-    document.getElementById("learning-title").textContent = `Lernen: ${folder.name}`;
-    document.getElementById("learning-section").classList.remove("hidden");
-    document.getElementById("folder-section").classList.add("hidden");
-    loadFlashcards(folder.categories.flatMap(category => category.flashcards));
+// Funktion zur Auswahl einer Stufe
+function selectStage(stage) {
+    alert(`Lernmodus für Stufe ${stage} wird gestartet`);
 }
 
+// Funktion zum Starten des Lernmodus für eine Kategorie
 function learnCategory(folderIndex, catIndex) {
-    const category = folders[folderIndex].categories[catIndex];
-    document.getElementById("learning-title").textContent = `Lernen: ${category.name}`;
-    document.getElementById("learning-section").classList.remove("hidden");
-    document.getElementById("folder-section").classList.add("hidden");
-    loadFlashcards(category.flashcards);
-}
-
-function loadFlashcards(flashcards) {
-    const flashcardSection = document.getElementById("flashcards");
-    flashcardSection.innerHTML = "";
-
-    flashcards.forEach((flashcard, index) => {
-        const flashcardDiv = document.createElement("div");
-        flashcardDiv.classList.add("flashcard");
-
-        if (flashcard.stage === 1) {
-            flashcardDiv.innerHTML = `
-                <p>${flashcard.question}</p>
-                <button onclick="answerQuestion(${index}, 'richtig')">Richtig</button>
-                <button onclick="answerQuestion(${index}, 'falsch')">Falsch</button>
-            `;
-        } else if (flashcard.stage === 2) {
-            flashcardDiv.innerHTML = `
-                <p>${flashcard.question}</p>
-                <button onclick="showAnswer(${index})">Antwort anzeigen</button>
-            `;
-        } else if (flashcard.stage === 3) {
-            flashcardDiv.innerHTML = `
-                <p>${flashcard.question}</p>
-                <input type="text" id="userAnswer-${index}" placeholder="Deine Antwort">
-                <button onclick="checkAnswer(${index})">Antwort prüfen</button>
-            `;
-        }
-        
-        flashcardSection.appendChild(flashcardDiv);
-    });
-}
-
-// Weitere Funktionen für Lernfortschritt, Antworten prüfen etc.
-function answerQuestion(index, result) {
-    if (result === 'richtig') {
-        flashcards[index].stage++;
-    }
-    loadFlashcards(flashcards);
-}
-
-function showAnswer(index) {
-    alert(`Antwort: ${flashcards[index].answer}`);
-}
-
-function checkAnswer(index) {
-    const userAnswer = document.getElementById(`userAnswer-${index}`).value;
-    if (userAnswer.toLowerCase() === flashcards[index].answer.toLowerCase()) {
-        alert("Richtig!");
-        flashcards[index].stage++;
-    } else {
-        alert("Falsch!");
-    }
-    loadFlashcards(flashcards);
-}
-
-function backToFolders() {
-    document.getElementById("learning-section").classList.add("hidden");
-    document.getElementById("folder-section").classList.remove("hidden");
-    displayFolders();
+    alert(`Lernmodus für Kategorie: ${folders[folderIndex].categories[catIndex].name}`);
 }

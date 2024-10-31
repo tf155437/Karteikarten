@@ -8,22 +8,34 @@
 </head>
 <body>
     <div id="app">
-        <!-- Bereich für Hauptordner und Kategorien -->
-        <div id="folder-section">
-            <h1>Karteikarten App</h1>
+        <!-- Sidebar für Hauptordner -->
+        <aside id="sidebar">
+            <h2>Sprachen</h2>
             <button onclick="createFolder()">Hauptordner erstellen</button>
             <div id="folders"></div>
-        </div>
+        </aside>
 
-        <!-- Bereich für das Lernen -->
-        <div id="learning-section" class="hidden">
-            <h2 id="learning-title"></h2>
-            <div id="flashcards"></div>
-            <button onclick="startLearning()">Lernen starten</button>
-            <button onclick="backToFolders()">Zurück zu Ordnern</button>
-        </div>
+        <!-- Hauptbereich -->
+        <main>
+            <div id="level-display">Ebene 1</div>
+            <div id="flashcards">
+                <!-- Karteikarten werden hier dynamisch angezeigt -->
+            </div>
+            <div id="stage-buttons">
+                <button onclick="selectStage(1)">Stufe 1</button>
+                <button onclick="selectStage(2)">Stufe 2</button>
+                <button onclick="selectStage(3)">Stufe 3</button>
+            </div>
+        </main>
+
+        <!-- Footer mit Aktionen -->
+        <footer>
+            <button onclick="addFlashcard()">+</button>
+            <button onclick="startLearning()">🎓</button>
+            <!-- Weitere Aktionen -->
+        </footer>
     </div>
-
+    
     <script src="script.js"></script>
 </body>
 </html>
