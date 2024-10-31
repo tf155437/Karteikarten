@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karteikarten App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Bereich für Hauptordner und Kategorien -->
+        <div id="folder-section">
+            <h1>Karteikarten App</h1>
+            <button onclick="createFolder()">Hauptordner erstellen</button>
+            <div id="folders"></div>
+        </div>
+
+        <!-- Bereich für das Lernen -->
+        <div id="learning-section" class="hidden">
+            <h2 id="learning-title"></h2>
+            <div id="flashcards"></div>
+            <button onclick="startLearning()">Lernen starten</button>
+            <button onclick="backToFolders()">Zurück zu Ordnern</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
