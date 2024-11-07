@@ -1,67 +1,82 @@
-// Beispiel-Daten für die Ordner und Kategorien
-const folders = [
-    {
-        name: "Economics",
-        categories: [
-            { name: "Recession", cards: [{ question: "Abwertung", answer: "devaluation", stage: 1 }] },
-            { name: "Stock Markets", cards: [{ question: "Anleger", answer: "investors", stage: 1 }] }
-        ]
-    },
-    {
-        name: "Mathematik",
-        categories: [
-            { name: "Algebra", cards: [{ question: "Was ist 2+2?", answer: "4", stage: 1 }] }
-        ]
-    }
-];
+let folders = [];
+let currentFolder = null;
+let currentStage = 1;
 
-// Lädt die Hauptordner in die Seitenleiste
-function loadFolders() {
-    const folderContainer = document.getElementById("folders");
-    folderContainer.innerHTML = "";
+function addFolder() {
+    const folderName = prompt("Name des neuen Hauptordners:");
+    if (folderName) {
+        folders.push({ name: folderName, categories: [] });
+        renderFolders();
+    }
+}
+
+function addCategory() {
+    if (!currentFolder) {
+        alert("Bitte wählen Sie einen Hauptordner aus.");
+        return;
+    }
+    const categoryName = prompt("Name der neuen Kategorie:");
+    if (categoryName) {
+        currentFolder.categories.push({ name: categoryName, stage: 1, cards: [] });
+        renderStages();
+    }
+}
+
+function renderFolders() {
+    const folderList = document.getElementById("folders");
+    folderList.innerHTML = "";
     folders.forEach((folder, index) => {
         const folderItem = document.createElement("li");
         folderItem.textContent = folder.name;
-        folderItem.onclick = () => loadCategories(index);
-        folderContainer.appendChild(folderItem);
+        folderItem.onclick = () => selectFolder(index);
+        folderList.appendChild(folderItem);
     });
 }
 
-// Lädt die Kategorien und Karten für einen ausgewählten Hauptordner
-function loadCategories(folderIndex) {
-    const categoriesContainer = document.getElementById("categories-container");
-    categoriesContainer.innerHTML = "";
+function selectFolder(index) {
+    currentFolder = folders[index];
+    renderStages();
+}
 
-    const folder = folders[folderIndex];
-    document.getElementById("category-title").textContent = folder.name;
+function renderStages() {
+    const stagesContainer = document.getElementById("stages");
+    stagesContainer.innerHTML = "";
+    
+    if (!currentFolder) return;
+    
+    for (let i = 1; i <= 3; i++) {
+        const stageDiv = document.createElement("div");
+        stageDiv.className = "stage";
+        
+        const stageTitle = document.createElement("h3");
+        stageTitle.textContent = `Stufe ${i}`;
+        stageDiv.appendChild(stageTitle);
 
-    folder.categories.forEach((category) => {
-        const categoryDiv = document.createElement("div");
-        categoryDiv.className = "category";
-        const categoryHeader = document.createElement("h3");
-        categoryHeader.textContent = category.name;
-        categoryDiv.appendChild(categoryHeader);
-
-        const cardGrid = document.createElement("div");
-        cardGrid.className = "card-grid";
-
-        // Karten in einer grid-basierten Ansicht anzeigen
-        category.cards.forEach(card => {
-            const cardDiv = document.createElement("div");
-            cardDiv.className = "card";
-            cardDiv.innerHTML = `<strong>${card.question}</strong><br><em>${card.answer}</em>`;
-            cardGrid.appendChild(cardDiv);
+        currentFolder.categories.forEach(category => {
+            if (category.stage === i) {
+                const cardDiv = document.createElement("div");
+                cardDiv.className = "card";
+                const title = document.createElement("div");
+                title.className = "card-title";
+                title.textContent = category.name;
+                const solution = document.createElement("div");
+                solution.className = "card-solution";
+                solution.textContent = "Lösung anzeigen";
+                cardDiv.appendChild(title);
+                cardDiv.appendChild(solution);
+                stageDiv.appendChild(cardDiv);
+            }
         });
-
-        categoryDiv.appendChild(cardGrid);
-        categoriesContainer.appendChild(categoryDiv);
-    });
+        stagesContainer.appendChild(stageDiv);
+    }
 }
 
-// Event für den Lernbutton
-document.getElementById("learn-button").addEventListener("click", () => {
-    alert("Lernmodus starten!");
-});
+function startLearning() {
+    if (!currentFolder) {
+        alert("Bitte wählen Sie einen Hauptordner zum Lernen.");
+        return;
+    }
+    alert("Lernen beginnt... (diese Funktion muss noch implementiert werden)");
+}
 
-// Initialisiert die Ordneranzeige beim Laden der Seite
-loadFolders();
+renderFolders();

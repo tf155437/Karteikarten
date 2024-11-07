@@ -1,36 +1,28 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karteikarten Lernplattform</title>
+    <title>Karteikarten Lernseite</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Linke Seitenleiste für Hauptordner und Kategorien -->
     <div class="sidebar">
-        <h2>Sprachen</h2>
+        <h2>Hauptordner</h2>
         <ul id="folders">
             <!-- Hauptordner werden hier dynamisch eingefügt -->
         </ul>
+        <button onclick="addFolder()">+ Neuer Ordner</button>
     </div>
-
-    <!-- Hauptinhalt für Karten -->
-    <div class="main-content">
-        <div class="top-bar">
-            <h3 id="category-title">Kategorie auswählen</h3>
-            <div class="search-bar">
-                <input type="text" placeholder="Suchen" />
-            </div>
+    <div class="content">
+        <div class="header">
+            <button onclick="addCategory()">+ Neue Kategorie</button>
+            <button onclick="startLearning()">Lernen</button>
         </div>
-        <div class="learning-options">
-            <button id="learn-button">Lernen</button>
-        </div>
-        <div id="categories-container">
-            <!-- Karten werden hier dynamisch eingefügt -->
+        <div class="stages" id="stages">
+            <!-- Stufen und Karteikarten werden hier dynamisch angezeigt -->
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
