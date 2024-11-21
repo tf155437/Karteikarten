@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karteikarten Lernseite</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vokabeltrainer</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="container">
+    <!-- Navigation links -->
     <div class="sidebar">
-        <h2>Hauptordner</h2>
-        <ul id="folders">
-            <!-- Hauptordner werden hier dynamisch eingefügt -->
-        </ul>
-        <button onclick="addFolder()">+ Neuer Ordner</button>
+      <button class="nav-button" id="all-vocab-btn">Alle Vokabeln</button>
+      <button class="nav-button" id="add-btn">Hinzufügen</button>
+      <button class="nav-button" id="learn-btn">Lernen</button>
+      <button class="nav-button" id="folders-btn">Ordner</button>
+      <button class="nav-button" id="categories-btn">Kategorien</button>
     </div>
-    <div class="content">
-        <div class="header">
-            <button onclick="addCategory()">+ Neue Kategorie</button>
-            <button onclick="startLearning()">Lernen</button>
-        </div>
-        <div class="stages" id="stages">
-            <!-- Stufen und Karteikarten werden hier dynamisch angezeigt -->
-        </div>
+    
+    <!-- Main content area -->
+    <div class="content" id="main-content">
+      <h2>Willkommen zum Vokabeltrainer!</h2>
+      <p>Wähle eine Option im Menü aus.</p>
     </div>
-    <script src="script.js"></script>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
