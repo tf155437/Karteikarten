@@ -1,54 +1,190 @@
-{
+/* Allgemeine Stile */
+body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: #fdfdfd;
+  color: #333;
 }
- 
+
 .container {
   display: flex;
   height: 100vh;
 }
- 
-.sidebabodyr {
-  width: 20%;
-  background-color: #f0f8ff;
+
+/* Sidebar Styles */
+.sidebar {
+  width: 25%;
+  background: linear-gradient(135deg, #e3fdfd, #ffe6fa);
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0 15px 15px 0;
 }
- 
+
 .nav-button {
-  margin: 5px 0;
-  padding: 10px;
-  background-color: #e6ecff;
+  margin: 10px 0;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #f9d1d1, #d6e5fa);
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
-  text-align: left;
-  font-size: 16px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-align: center;
+  color: #555;
 }
- 
+
 .nav-button:hover {
-  background-color: #d1d9ff;
+  background: linear-gradient(135deg, #d6e5fa, #f9d1d1);
+  transform: scale(1.05);
 }
- 
+
+.nav-button:active {
+  transform: scale(0.95);
+}
+
+/* Main Content Styles */
 .content {
   flex: 1;
-  background-color: #ffecec;
-  padding: 20px;
+  background: #ffffff;
+  border-radius: 15px 0 0 15px;
+  padding: 40px;
   overflow-y: auto;
+  box-shadow: -3px 0 10px rgba(0, 0, 0, 0.1);
 }
- 
-.level {
+
+.content h2 {
+  font-size: 28px;
+  color: #333;
   margin-bottom: 20px;
 }
- 
-.card {
-  width: 100px;
-  height: 60px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  display: inline-block;
-  margin: 10px;
+
+.content p {
+  font-size: 16px;
+  line-height: 1.6;
 }
+
+/* Forms and Buttons */
+form {
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"] {
+  background-color: #fefefe;
+}
+
+button[type="submit"] {
+  background: linear-gradient(135deg, #c6e5fa, #e3fdfd);
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(135deg, #e3fdfd, #c6e5fa);
+  transform: scale(1.05);
+}
+
+/* Vocabulary List */
+#vocab-list li {
+  padding: 10px;
+  background: #f9f9f9;
+  margin: 5px 0;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Folder and Category Display */
+.folder-section {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #fefefe;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.folder-section h3 {
+  font-size: 22px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.category-list {
+  margin-left: 20px;
+}
+
+.category-list li {
+  padding: 8px;
+  margin: 5px 0;
+  background: #f0f8ff;
+  border-radius: 5px;
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.vocab-list li {
+  padding: 8px;
+  margin: 5px 0;
+  background: #ffecec;
+  border-radius: 5px;
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Learning Mode */
+.category-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+t-size: 20px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.learn-button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  width: 80%;
+  font-size: 16px;
+  background: linear-gradient(135deg, #c6e5fa, #e3fdfd);
+  border: none;
+  border-radius: 10px;
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.learn-button:hover {
+  background: linear-gradient(135deg, #e3fdfd, #c6e5fa);
+  transform: scale(1.05);
+}
+
+.category-section {
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  background: #fff5f5;
+  text-align: center;
+  flex: 1 1 calc(33.33% - 40px);
+  max-width: calc(33.33% - 40px);
+}
+
+.category-section h3 {
+  fon}
