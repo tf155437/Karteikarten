@@ -21,8 +21,38 @@
       <h2>Willkommen zum Vokabeltrainer!</h2>
       <p>Wähle eine Option im Menü aus.</p>
     </div>
+ 
+    <!-- Learning Area (Hidden by default) -->
+    <div id="learning-area" style="display:none;">
+      <h3>Wähle eine Lernmethode:</h3>
+      <button id="write-btn">Schreiben</button>
+      <button id="select-btn">Auswählen</button>
+      <button id="true-false-btn">Richtig oder Falsch</button>
+     
+      <!-- Write Section -->
+      <div id="write-section" style="display:none;">
+        <p id="vocab-to-write">Hier kommt die Vokabel, die du schreiben sollst.</p>
+        <input type="text" id="input-word">
+        <button id="submit-word">Abschicken</button>
+      </div>
+ 
+      <!-- Select Section -->
+      <div id="select-section" style="display:none;">
+        <p id="vocab-question">Welche Vokabel ist korrekt?</p>
+        <button class="answer-btn">Antwort 1</button>
+        <button class="answer-btn">Antwort 2</button>
+        <button class="answer-btn">Antwort 3</button>
+      </div>
+ 
+      <!-- True or False Section -->
+      <div id="true-false-section" style="display:none;">
+        <p id="correct-vocab">Die richtige Vokabel ist: </p>
+        <p id="incorrect-vocab">Die falsche Vokabel ist: </p>
+      </div>
+    </div>
   </div>
  
   <script src="script.js"></script>
 </body>
 </html>
+ 
